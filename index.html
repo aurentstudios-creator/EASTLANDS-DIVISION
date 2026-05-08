@@ -376,14 +376,6 @@
       color: var(--gray);
       font-size: 0.85rem;
     }
-    .qr-instruction {
-      margin-top: 2rem;
-      padding: 1rem;
-      background: rgba(212,175,55,0.1);
-      border-radius: 16px;
-      text-align: center;
-      border: 1px dashed var(--gold);
-    }
 
     /* Contact Section */
     .contact-grid {
@@ -539,15 +531,6 @@
     </div>
     <div class="rank-note"><i class="fas fa-qrcode"></i> Scan your corps certificate QR code — your corps will be highlighted in gold!</div>
   </div>
-
-  <!-- QR Instruction Box -->
-  <div class="qr-instruction">
-    <i class="fas fa-qrcode" style="font-size: 1.5rem; color: var(--gold); margin-bottom: 0.5rem; display: block;"></i>
-    <strong>📱 How to create your corps QR code:</strong><br>
-    Use this URL pattern: <code style="background: #eee; padding: 0.2rem 0.5rem; border-radius: 8px;">https://YOUR-SITE.com/#rankings?corp=CorpsName</code><br>
-    Replace <strong>CorpsName</strong> with: Makadara Citadel, Embakasi Corps, Dandora Phase 5, Kayole Corps, Mwangaza Corps, or Pipeline Corps<br>
-    <span style="font-size: 0.8rem; display: block; margin-top: 0.5rem;">✅ When scanned, their specific corps row will GLOW and be highlighted!</span>
-  </div>
 </div>
 
 <!-- CONTACT PAGE -->
@@ -647,7 +630,7 @@
           }
         });
         if (found) {
-          // Show a subtle toast/notification
+          // Show a subtle notification
           const note = document.querySelector('.rank-note');
           if (note) {
             const originalText = note.innerHTML;
