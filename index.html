@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Salvation Army - Eastlands Division</title>
+  <title>The Salvation Army | Eastlands Division - Transforming Lives</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -12,290 +16,504 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #fefef7;
-      color: #1a1a2e;
-      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
     }
 
-    /* Color variables */
     :root {
-      --navy: #0a192f;
-      --navy-light: #112240;
-      --yellow: #f5c518;
-      --maroon: #800020;
-      --maroon-light: #9e2a2a;
-      --light-bg: #fef9e6;
-      --gray: #4a5568;
+      --navy: #0a2540;
+      --navy-dark: #051a2c;
+      --navy-light: #1a3a5c;
+      --gold: #d4af37;
+      --gold-light: #f5e6a3;
+      --maroon: #6b1d2f;
+      --maroon-light: #8b2a3f;
+      --cream: #fef7e0;
+      --gray-light: #f1f5f9;
+      --gray: #64748b;
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     }
 
     /* Navigation */
     .navbar {
-      background: var(--navy);
-      padding: 1rem 2rem;
-      position: sticky;
+      background: rgba(10, 37, 64, 0.95);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      transition: all 0.3s ease;
     }
     .nav-container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
     }
-    .logo-area {
+    .logo {
       display: flex;
       align-items: center;
       gap: 1rem;
     }
-    .logo-placeholder {
-      width: 50px;
-      height: 50px;
-      background: var(--yellow);
-      border-radius: 8px;
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--gold), var(--maroon));
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      color: var(--navy);
+      color: white;
       font-size: 12px;
       text-align: center;
     }
-    .site-title {
+    .logo-text h1 {
+      font-size: 1.2rem;
+      font-weight: 700;
       color: white;
-      font-size: 1.3rem;
-      font-weight: 600;
+      letter-spacing: -0.3px;
     }
-    .site-title span {
-      color: var(--yellow);
+    .logo-text p {
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 1px;
     }
     .nav-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 2rem;
       list-style: none;
-      flex-wrap: wrap;
     }
     .nav-links a {
       color: white;
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s;
-      padding: 0.5rem 0;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+      position: relative;
     }
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--yellow);
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+    .nav-links a.active {
+      color: var(--gold);
+    }
+    .mobile-menu {
+      display: none;
+      font-size: 1.5rem;
+      color: white;
+      cursor: pointer;
     }
 
-    /* Main content */
+    /* Main Content */
     .page {
       display: none;
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      animation: fadeIn 0.5s ease;
+      padding-top: 80px;
+      min-height: 100vh;
+      animation: fadeInUp 0.5s ease;
     }
     .page.active-page {
       display: block;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px);}
-      to { opacity: 1; transform: translateY(0);}
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* Hero section */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Hero Section */
     .hero {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-      color: white;
-      padding: 3rem;
-      border-radius: 20px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+      border-radius: 2rem;
+      padding: 4rem 3rem;
       text-align: center;
-      margin-bottom: 2rem;
+      color: white;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
     }
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: 3.5rem;
+      font-weight: 800;
       margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
     }
     .hero h1 span {
-      color: var(--yellow);
+      color: var(--gold);
     }
     .hero p {
       font-size: 1.2rem;
       opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(212,175,55,0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(5px);
     }
 
-    /* Cards for targets */
-    .targets-grid {
+    /* Cards Grid */
+    .grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
       margin-top: 2rem;
     }
-    .target-card {
+    .card {
       background: white;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+      border: 1px solid rgba(0,0,0,0.05);
     }
-    .target-card:hover {
+    .card:hover {
       transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
     }
-    .target-header {
-      background: var(--maroon);
-      color: white;
-      padding: 1rem;
-      font-size: 1.3rem;
-      font-weight: bold;
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--maroon-light), var(--navy));
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .card-icon i {
+      font-size: 2rem;
+      color: var(--gold);
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--navy);
+    }
+    .card p {
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* Targets Section */
+    .targets-header {
       text-align: center;
+      margin-bottom: 3rem;
     }
-    .target-body {
-      padding: 1.5rem;
+    .targets-header h2 {
+      font-size: 2.5rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
     }
-    .corp-entry {
-      border-bottom: 1px solid #eee;
-      padding: 0.8rem 0;
+    .targets-header p {
+      color: var(--gray);
+    }
+    .target-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .target-tab {
+      padding: 0.75rem 1.5rem;
+      background: white;
+      border: 2px solid var(--navy-light);
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .target-tab.active {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+    }
+    .target-content {
+      display: none;
+    }
+    .target-content.active-content {
+      display: block;
+    }
+    .leaderboard {
+      background: white;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .leaderboard-item {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--gray-light);
+      transition: background 0.3s;
     }
-    .corp-name {
-      font-weight: bold;
+    .leaderboard-item:hover {
+      background: var(--gray-light);
+    }
+    .leaderboard-rank {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--gold);
+      width: 50px;
+    }
+    .leaderboard-name {
+      flex: 1;
+      font-weight: 600;
       color: var(--navy);
     }
-    .corp-achievement {
+    .leaderboard-value {
+      font-weight: 800;
       color: var(--maroon);
-      font-weight: bold;
+      font-size: 1.1rem;
     }
-    .hall-link {
+    .leaderboard-badge {
+      width: 30px;
       text-align: center;
-      margin-top: 2rem;
     }
 
-    /* Updates page */
-    .updates-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+    /* Updates Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
     }
-    .update-item {
-      background: white;
-      border-left: 5px solid var(--yellow);
-      padding: 1.2rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), var(--maroon));
     }
-    .update-date {
-      color: var(--maroon);
-      font-weight: bold;
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-left: 2rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -0.5rem;
+      top: 0.25rem;
+      width: 12px;
+      height: 12px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 0 0 2px var(--gold);
+    }
+    .timeline-date {
       font-size: 0.85rem;
+      color: var(--maroon);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
     }
-    .update-title {
+    .timeline-title {
       font-size: 1.2rem;
+      font-weight: 700;
       color: var(--navy);
-      margin: 0.5rem 0;
+      margin-bottom: 0.5rem;
     }
 
-    /* Gallery */
+    /* Gallery Grid */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 1.5rem;
     }
-    .gallery-item {
+    .gallery-card {
       background: white;
-      border-radius: 12px;
+      border-radius: 1rem;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
       cursor: pointer;
-      transition: transform 0.3s;
     }
-    .gallery-item:hover {
-      transform: scale(1.02);
+    .gallery-card:hover {
+      transform: scale(1.03);
+      box-shadow: var(--shadow-md);
     }
-    .gallery-placeholder {
-      height: 180px;
-      background: linear-gradient(135deg, var(--navy-light), var(--maroon));
+    .gallery-image {
+      height: 200px;
+      background: linear-gradient(135deg, var(--navy-light), var(--maroon-light));
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 2rem;
+      font-size: 3rem;
     }
     .gallery-caption {
-      padding: 0.8rem;
+      padding: 1rem;
       text-align: center;
-      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--navy);
     }
 
-    /* Contact */
-    .contact-grid {
+    /* Contact Section */
+    .contact-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
     }
-    .contact-info {
+    .contact-card {
       background: white;
-      padding: 1.5rem;
-      border-radius: 15px;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
     }
-    .contact-info h3 {
-      color: var(--maroon);
-      margin-bottom: 1rem;
+    .contact-card h3 {
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
     }
-    .contact-detail {
-      margin: 1rem 0;
+    .contact-info-item {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-    }
-    .contact-form input, .contact-form textarea {
-      width: 100%;
-      padding: 0.8rem;
-      margin: 0.5rem 0;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-    }
-    .btn {
-      background: var(--maroon);
-      color: white;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 25px;
-      cursor: pointer;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      border-radius: 0.75rem;
       transition: background 0.3s;
     }
-    .btn:hover {
+    .contact-info-item:hover {
+      background: var(--gray-light);
+    }
+    .contact-info-item i {
+      width: 30px;
+      color: var(--maroon);
+      font-size: 1.2rem;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.85rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      font-family: inherit;
+      transition: all 0.3s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+    }
+    .btn {
       background: var(--navy);
+      color: white;
+      border: none;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn:hover {
+      background: var(--maroon);
+      transform: translateY(-2px);
     }
 
     /* Footer */
     .footer {
-      background: var(--navy);
+      background: var(--navy-dark);
       color: white;
       text-align: center;
-      padding: 1.5rem;
-      margin-top: 2rem;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+    .footer a {
+      color: var(--gold);
+      text-decoration: none;
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .nav-container {
-        flex-direction: column;
-        gap: 1rem;
+      .mobile-menu {
+        display: block;
       }
       .nav-links {
-        justify-content: center;
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--navy);
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+        gap: 1rem;
       }
-      .contact-grid {
-        grid-template-columns: 1fr;
+      .nav-links.show {
+        display: flex;
       }
       .hero h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
-      .page {
-        padding: 1.5rem;
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .target-tabs {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .container {
+        padding: 1rem;
       }
     }
   </style>
@@ -304,210 +522,185 @@
 
 <nav class="navbar">
   <div class="nav-container">
-    <div class="logo-area">
-      <div class="logo-placeholder" id="logoPlaceholder">
-        SA<br>Logo
+    <div class="logo">
+      <div class="logo-icon">
+        <i class="fas fa-cross"></i>
       </div>
-      <div class="site-title">Salvation Army <span>Eastlands Division</span></div>
+      <div class="logo-text">
+        <h1>Salvation Army</h1>
+        <p>EASTLANDS DIVISION</p>
+      </div>
     </div>
-    <ul class="nav-links">
+    <div class="mobile-menu" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#" data-page="home" class="active">Home</a></li>
-      <li><a href="#" data-page="targets">🏆 Targets Hall of Fame</a></li>
-      <li><a href="#" data-page="updates">📢 Divisional Updates</a></li>
-      <li><a href="#" data-page="gallery">📸 Gallery</a></li>
-      <li><a href="#" data-page="contact">📞 Contacts</a></li>
+      <li><a href="#" data-page="targets">Hall of Fame</a></li>
+      <li><a href="#" data-page="updates">Updates</a></li>
+      <li><a href="#" data-page="gallery">Gallery</a></li>
+      <li><a href="#" data-page="contact">Contact</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- HOME PAGE -->
+<!-- Home Page -->
 <div id="home" class="page active-page">
-  <div class="hero">
-    <h1>Welcome to <span>Eastlands Division</span></h1>
-    <p>Transforming lives, sharing hope, and serving our communities in Eastlands with love and excellence.</p>
-  </div>
-  <div style="text-align: center; margin-bottom: 2rem;">
-    <p style="font-size: 1.1rem;">"Heart to God, Hand to Man" — Our division serves over 15 corps and centers across Eastlands region.</p>
-  </div>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-    <div style="background: white; padding: 1.5rem; border-radius: 12px; border-top: 4px solid var(--yellow);">
-      <h3 style="color: var(--maroon);">🌟 Our Mission</h3>
-      <p>To preach the gospel of Jesus Christ and meet human needs in His name without discrimination.</p>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-badge">Since 1865 • Serving Eastlands</div>
+      <h1>Heart to <span>God</span><br>Hand to <span>Man</span></h1>
+      <p>Transforming lives and communities across Eastlands through faith, hope, and practical service.</p>
     </div>
-    <div style="background: white; padding: 1.5rem; border-radius: 12px; border-top: 4px solid var(--maroon);">
-      <h3 style="color: var(--maroon);">📍 Coverage</h3>
-      <p>Eastlands, including Buruburu, Kayole, Umoja, Donholm, and surrounding communities.</p>
-    </div>
-    <div style="background: white; padding: 1.5rem; border-radius: 12px; border-top: 4px solid var(--yellow);">
-      <h3 style="color: var(--maroon);">🙏 Weekly Services</h3>
-      <p>Sunday worship, Wednesday prayer meetings, and community outreach programs.</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-church"></i></div>
+        <h3>Our Mission</h3>
+        <p>To preach the gospel of Jesus Christ and meet human needs in His name without discrimination across Eastlands region.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <h3>Our Reach</h3>
+        <p>Serving 15+ corps and centers across Buruburu, Kayole, Umoja, Donholm, Jericho, Embakasi, and beyond.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-hands-helping"></i></div>
+        <h3>Our Impact</h3>
+        <p>Over 5,000 lives touched annually through food programs, education support, and spiritual guidance.</p>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- TARGETS HALL OF FAME PAGE -->
+<!-- Targets Hall of Fame Page -->
 <div id="targets" class="page">
-  <h2 style="color: var(--navy); text-align: center; margin-bottom: 0.5rem;">🏆 Corps Hall of Fame</h2>
-  <p style="text-align: center; color: var(--gray); margin-bottom: 2rem;">Celebrating corps that have reached exceptional targets</p>
-  
-  <div class="targets-grid">
-    <div class="target-card">
-      <div class="target-header">💰 Self Denial Targets 2025</div>
-      <div class="target-body">
-        <div class="corp-entry"><span class="corp-name">🏅 Buruburu Corps</span><span class="corp-achievement">250% Achieved</span></div>
-        <div class="corp-entry"><span class="corp-name">🏅 Kayole Corps</span><span class="corp-achievement">210% Achieved</span></div>
-        <div class="corp-entry"><span class="corp-name">🏅 Umoja Corps</span><span class="corp-achievement">185% Achieved</span></div>
-        <div class="corp-entry"><span class="corp-name">🏅 Donholm Corps</span><span class="corp-achievement">170% Achieved</span></div>
-        <div class="corp-entry"><span class="corp-name">🏅 Jericho Corps</span><span class="corp-achievement">168% Achieved</span></div>
+  <div class="container">
+    <div class="targets-header">
+      <h2>🏆 Corps Hall of Fame</h2>
+      <p>Celebrating excellence in service, sacrifice, and soul-winning</p>
+    </div>
+    <div class="target-tabs">
+      <div class="target-tab active" data-target="selfdenial">💰 Self Denial</div>
+      <div class="target-tab" data-target="harvest">🌾 Harvest Festival</div>
+      <div class="target-tab" data-target="soulwinning">🙌 Soul Winning</div>
+    </div>
+    
+    <div id="selfdenial" class="target-content active-content">
+      <div class="leaderboard">
+        <div class="leaderboard-item"><div class="leaderboard-rank">🥇</div><div class="leaderboard-name">Buruburu Corps</div><div class="leaderboard-value">250%</div><div class="leaderboard-badge">🏅</div></div>
+        <div class="leaderboard-item"><div class="leaderboard-rank">🥈</div><div class="leaderboard-name">Kayole Corps</div><div class="leaderboard-value">210%</div><div class="leaderboard-badge">🏅</div></div>
+        <div class="leaderboard-item"><div class="leaderboard-rank">🥉</div><div class="leaderboard-name">Umoja Corps</div><div class="leaderboard-value">185%</div><div class="leaderboard-badge">⭐</div></div>
+        <div class="leaderboard-item"><div class="leaderboard-rank">4</div><div class="leaderboard-name">Donholm Corps</div><div class="leaderboard-value">170%</div></div>
+        <div class="leaderboard-item"><div class="leaderboard-rank">5</div><div class="leaderboard-name">Jericho Corps</div><div class="leaderboard-value">168%</div></div>
       </div>
     </div>
     
-    <div class="target-card">
-      <div class="target-header">🌾 Harvest Festival Targets</div>
-      <div class="target-body">
-        <div class="corp-entry"><span class="corp-name">🌽 Embakasi Corps</span><span class="corp-achievement">3,200 kg raised</span></div>
-        <div class="corp-entry"><span class="corp-name">🌽 Buruburu Corps</span><span class="corp-achievement">2,800 kg raised</span></div>
-        <div class="corp-entry"><span class="corp-name">🌽 Mihang'o Corps</span><span class="corp-achievement">2,500 kg raised</span></div>
-        <div class="corp-entry"><span class="corp-name">🌽 Tena Corps</span><span class="corp-achievement">2,100 kg raised</span></div>
+    <div id="harvest" class="target-content">
+      <div class="leaderboard">
+        <div class="leaderboard-item"><div class="leaderboard-rank">🥇</div><div class="leaderboard-name">Embakasi Corps</div><div class="leaderboard-value">3,200 kg</div><div class="leaderboard-badge">🌽</div></div>
+        <div class="leaderboard-item"><div class="leaderboard-rank">🥈</div><div class="leaderboard-name">Buruburu Corps</div><div class="leaderboard-value">2,800 kg</div><div class="leaderboard-badge">🌽</div></div>
+        <div class="leaderboard-item"><div class="leaderboard-rank">🥉</div><div class="leaderboard-name">Mihang'o Corps</div><div class="leaderboard-value">2,500 kg</div><div class="leaderboard-badge">⭐</div></div>
+        <div class="leaderboard-item"><div class="leaderboard-rank">4</div><div class="leaderboard-name">Tena Corps</div><div class="leaderboard-value">2,100 kg</div></div>
       </div>
     </div>
     
-    <div class="target-card">
-      <div class="target-header">🙌 Soul Winning Goals</div>
-      <div class="target-body">
-        <div class="corp-entry"><span class="corp-name">✝️ Kayole Corps</span><span class="corp-achievement">124 new converts</span></div>
-        <div class="corp-entry"><span class="corp-name">✝️ Donholm Corps</span><span class="corp-achievement">98 new converts</span></div>
-        <div class="corp-entry"><span class="corp-name">✝️ Buruburu Corps</span><span class="corp-achievement">87 new converts</span></div>
+    <div id="soulwinning" class="target-content">
+      <div class="leaderboard">
+        <div class="leaderboard-item"><div class="leaderboard-rank">🥇</div><div class="leaderboard-name">Kayole Corps</div><div class="leaderboard-value">124 souls</div><div class="leaderboard-badge">✝️</div></div>
+        <div class="leaderboard-item"><div class="leaderboard-rank">🥈</div><div class="leaderboard-name">Donholm Corps</div><div class="leaderboard-value">98 souls</div><div class="leaderboard-badge">✝️</div></div>
+        <div class="leaderboard-item"><div class="leaderboard-rank">🥉</div><div class="leaderboard-name">Buruburu Corps</div><div class="leaderboard-value">87 souls</div><div class="leaderboard-badge">⭐</div></div>
       </div>
     </div>
-  </div>
-  <div class="hall-link">
-    <p style="color: var(--navy);"><em>🏅 Keep reaching higher! New targets announced quarterly.</em></p>
   </div>
 </div>
 
-<!-- DIVISIONAL UPDATES PAGE -->
+<!-- Updates Page -->
 <div id="updates" class="page">
-  <h2 style="color: var(--navy); text-align: center;">📢 Eastlands Divisional Updates</h2>
-  <p style="text-align: center; margin-bottom: 2rem;">Latest news, announcements, and events from across the division</p>
-  
-  <div class="updates-list">
-    <div class="update-item">
-      <div class="update-date">📅 May 15, 2025</div>
-      <div class="update-title">🎉 Annual Divisional Congress - Save the Date!</div>
-      <p>Join us on June 28-30, 2025 at the Eastlands Sports Ground. Theme: "Arise and Build". All corps are encouraged to prepare performances and testimonies.</p>
+  <div class="container">
+    <div class="targets-header">
+      <h2>📢 Divisional Updates</h2>
+      <p>Stay informed with the latest news and announcements</p>
     </div>
-    <div class="update-item">
-      <div class="update-date">📅 May 10, 2025</div>
-      <div class="update-title">🤝 Partnership with Local Schools</div>
-      <p>Eastlands Division launched food distribution program in 5 primary schools. Over 1,200 children receiving daily meals through our partnership.</p>
-    </div>
-    <div class="update-item">
-      <div class="update-date">📅 May 5, 2025</div>
-      <div class="update-title">🏃‍♂️ Eastlands Charity Run 2025</div>
-      <p>Thank you to all participants! We raised KSh 450,000 for the children's home project. Photos coming soon to the gallery.</p>
-    </div>
-    <div class="update-item">
-      <div class="update-date">📅 April 28, 2025</div>
-      <div class="update-title">📖 New Officers Appointed</div>
-      <p>Welcome Captain Michael Otieno and Lieutenant Sarah Wanjiku to the Eastlands leadership team. Praying for God's guidance in their new roles.</p>
-    </div>
-    <div class="update-item">
-      <div class="update-date">📅 April 20, 2025</div>
-      <div class="update-title">🎵 Music & Arts Festival Results</div>
-      <p>Buruburu Corps wins the divisional music trophy. Congratulations! Donholm Corps takes the drama award.</p>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-date">June 28-30, 2025</div><div class="timeline-title">🎉 Annual Divisional Congress</div><div>Theme: "Arise and Build" at Eastlands Sports Ground. All corps invited!</div></div>
+      <div class="timeline-item"><div class="timeline-date">May 15, 2025</div><div class="timeline-title">🤝 Community Partnership Launch</div><div>Food distribution program launched in 5 primary schools, serving 1,200+ children daily.</div></div>
+      <div class="timeline-item"><div class="timeline-date">May 5, 2025</div><div class="timeline-title">🏃 Charity Run 2025 Success</div><div>Raised KSh 450,000 for children's home project. Thank you, Eastlands!</div></div>
+      <div class="timeline-item"><div class="timeline-date">April 28, 2025</div><div class="timeline-title">📖 New Officers Appointed</div><div>Welcome Captain Michael Otieno and Lieutenant Sarah Wanjiku to our leadership team.</div></div>
     </div>
   </div>
 </div>
 
-<!-- GALLERY PAGE -->
+<!-- Gallery Page -->
 <div id="gallery" class="page">
-  <h2 style="color: var(--navy); text-align: center;">📸 Photo Gallery</h2>
-  <p style="text-align: center; margin-bottom: 2rem;">Moments from our services, events, and community outreach</p>
-  
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <div class="gallery-placeholder">📷 Sunday Service</div>
-      <div class="gallery-caption">Sunday Worship at Buruburu Corps - March 2025</div>
+  <div class="container">
+    <div class="targets-header">
+      <h2>📸 Moments in Ministry</h2>
+      <p>Capturing God's work across Eastlands Division</p>
     </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">📷 Harvest Festival</div>
-      <div class="gallery-caption">Harvest Thanksgiving - Kayole Corps</div>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">📷 Youth Camp</div>
-      <div class="gallery-caption">Eastlands Youth Camp - Over 300 attendees</div>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">📷 Community Visit</div>
-      <div class="gallery-caption">Visiting elderly in Donholm community</div>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">📷 Prayer Conference</div>
-      <div class="gallery-caption">All-night prayer conference - Umoja Corps</div>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">📷 Charity Event</div>
-      <div class="gallery-caption">Food distribution - December 2024</div>
+    <div class="gallery-grid">
+      <div class="gallery-card"><div class="gallery-image"><i class="fas fa-church fa-3x"></i></div><div class="gallery-caption">Sunday Worship - Buruburu Corps</div></div>
+      <div class="gallery-card"><div class="gallery-image"><i class="fas fa-apple-alt fa-3x"></i></div><div class="gallery-caption">Harvest Festival - Kayole Corps</div></div>
+      <div class="gallery-card"><div class="gallery-image"><i class="fas fa-users fa-3x"></i></div><div class="gallery-caption">Youth Camp 2025 - 300+ Attendees</div></div>
+      <div class="gallery-card"><div class="gallery-image"><i class="fas fa-hand-holding-heart fa-3x"></i></div><div class="gallery-caption">Community Outreach - Donholm</div></div>
+      <div class="gallery-card"><div class="gallery-image"><i class="fas fa-pray fa-3x"></i></div><div class="gallery-caption">All-Night Prayer Conference - Umoja</div></div>
+      <div class="gallery-card"><div class="gallery-image"><i class="fas fa-gift fa-3x"></i></div><div class="gallery-caption">Christmas Food Distribution - Dec 2024</div></div>
     </div>
   </div>
-  <p style="text-align: center; margin-top: 2rem; color: var(--gray);"><em>More photos coming soon. Email your event pictures to be featured!</em></p>
 </div>
 
-<!-- CONTACT PAGE -->
+<!-- Contact Page -->
 <div id="contact" class="page">
-  <h2 style="color: var(--navy); text-align: center;">📞 Contact Eastlands Division</h2>
-  <p style="text-align: center; margin-bottom: 2rem;">Get in touch with our divisional headquarters</p>
-  
-  <div class="contact-grid">
-    <div class="contact-info">
-      <h3>📍 Divisional Headquarters</h3>
-      <div class="contact-detail">🏢 Eastlands Divisional Office, P.O. Box 12345-00100, Nairobi</div>
-      <div class="contact-detail">📞 +254 700 123 456</div>
-      <div class="contact-detail">📧 eastlands@salvationarmy.or.ke</div>
-      <div class="contact-detail">⏰ Mon-Fri: 8:00 AM - 5:00 PM</div>
-      <h3 style="margin-top: 1.5rem;">👨‍💼 Divisional Leaders</h3>
-      <div class="contact-detail">Major John Mwangi - Divisional Commander</div>
-      <div class="contact-detail">Major Mary Mwangi - Associate Commander</div>
-      <div class="contact-detail">Captain Peter Ochieng - Youth Secretary</div>
+  <div class="container">
+    <div class="targets-header">
+      <h2>📞 Get in Touch</h2>
+      <p>Connect with Eastlands Divisional Headquarters</p>
     </div>
-    
-    <div class="contact-info">
-      <h3>📧 Send us a Message</h3>
-      <form id="contactForm" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent to eastlands@salvationarmy.or.ke. We will respond within 2-3 days.'); this.reset();">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <input type="text" placeholder="Corps (if applicable)">
-        <textarea rows="4" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-      <p style="margin-top: 1rem; font-size: 0.85rem;">You can also email us directly at: <strong>aurentstudios@gmail.com</strong></p>
+    <div class="contact-wrapper">
+      <div class="contact-card">
+        <h3><i class="fas fa-map-pin"></i> Visit Us</h3>
+        <div class="contact-info-item"><i class="fas fa-building"></i><span>Eastlands Divisional HQ, P.O. Box 12345-00100, Nairobi</span></div>
+        <div class="contact-info-item"><i class="fas fa-phone"></i><span>+254 700 123 456</span></div>
+        <div class="contact-info-item"><i class="fas fa-envelope"></i><span>eastlands@salvationarmy.or.ke</span></div>
+        <div class="contact-info-item"><i class="fas fa-clock"></i><span>Mon-Fri: 8:00 AM - 5:00 PM</span></div>
+        <h3 style="margin-top: 1.5rem;"><i class="fas fa-user-tie"></i> Leadership</h3>
+        <div class="contact-info-item"><i class="fas fa-user"></i><span>Major John Mwangi - Divisional Commander</span></div>
+        <div class="contact-info-item"><i class="fas fa-user"></i><span>Major Mary Mwangi - Associate Commander</span></div>
+      </div>
+      <div class="contact-card">
+        <h3><i class="fas fa-paper-plane"></i> Send a Message</h3>
+        <form id="contactForm" onsubmit="event.preventDefault(); alert('✓ Message sent! We will respond within 2-3 business days. God bless you!'); this.reset();">
+          <div class="form-group"><input type="text" placeholder="Your Name" required></div>
+          <div class="form-group"><input type="email" placeholder="Your Email" required></div>
+          <div class="form-group"><input type="text" placeholder="Corps (if applicable)"></div>
+          <div class="form-group"><textarea rows="4" placeholder="Your Message" required></textarea></div>
+          <button type="submit" class="btn"><i class="fas fa-send"></i> Send Message</button>
+        </form>
+        <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--gray);">Or email us directly: <strong>aurentstudios@gmail.com</strong></p>
+      </div>
     </div>
   </div>
 </div>
 
 <footer class="footer">
-  <p>&copy; 2025 The Salvation Army - Eastlands Division. All rights reserved.</p>
-  <p style="margin-top: 0.5rem; font-size: 0.85rem;">"Do all the good you can, by all the means you can" - William Booth</p>
-  <p style="margin-top: 0.5rem;">🇰🇪 Serving Eastlands with love | Website designed for God's glory</p>
+  <p>© 2025 The Salvation Army - Eastlands Division | "Do all the good you can, by all the means you can" - William Booth</p>
+  <p style="margin-top: 0.5rem;">🇰🇪 Serving Eastlands with love, hope, and transformation</p>
 </footer>
 
 <script>
-  // Simple page navigation
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('show');
+  }
+  
+  // Page navigation
   const pages = ['home', 'targets', 'updates', 'gallery', 'contact'];
   const navLinks = document.querySelectorAll('.nav-links a');
   
   function showPage(pageId) {
-    // Hide all pages
     pages.forEach(page => {
-      const pageElement = document.getElementById(page);
-      if (pageElement) pageElement.classList.remove('active-page');
+      document.getElementById(page).classList.remove('active-page');
     });
-    // Show selected page
-    const activePage = document.getElementById(pageId);
-    if (activePage) activePage.classList.add('active-page');
+    document.getElementById(pageId).classList.add('active-page');
     
-    // Update active nav link
     navLinks.forEach(link => {
       link.classList.remove('active');
       if (link.getAttribute('data-page') === pageId) {
@@ -515,42 +708,33 @@
       }
     });
     
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.innerWidth <= 768) {
+      document.getElementById('navLinks').classList.remove('show');
+    }
   }
   
-  // Add click handlers
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      const pageId = link.getAttribute('data-page');
-      if (pageId) showPage(pageId);
+      showPage(link.getAttribute('data-page'));
     });
   });
   
-  // Set home active on load
-  showPage('home');
+  // Target tabs
+  const tabs = document.querySelectorAll('.target-tab');
+  const contents = document.querySelectorAll('.target-content');
   
-  // Optional: You can add your logo later by replacing the placeholder
-  console.log('Ready to add your SA logo — just replace the logo-placeholder content with an <img> tag');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      contents.forEach(c => c.classList.remove('active-content'));
+      document.getElementById(tab.dataset.target).classList.add('active-content');
+    });
+  });
+  
+  showPage('home');
 </script>
-
-<!-- Instructions for adding your logo and email -->
-<script>
-  // To add your logo: Find the element with id="logoPlaceholder" and replace it with an img tag
-  // Example (uncomment and modify after uploading logo):
-  /*
-  const logoArea = document.getElementById('logoPlaceholder');
-  if (logoArea) {
-    const logoImg = document.createElement('img');
-    logoImg.src = 'your-logo.png'; // Upload your logo to the same folder and put filename here
-    logoImg.style.width = '50px';
-    logoImg.style.height = '50px';
-    logoImg.style.borderRadius = '8px';
-    logoArea.parentNode.replaceChild(logoImg, logoArea);
-  }
-  */
-</script>
-
 </body>
 </html>
