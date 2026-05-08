@@ -270,7 +270,7 @@
       margin-bottom: 0.5rem;
     }
 
-    /* RANKING TABLE - Clean style, no "league" or "points" */
+    /* RANKING TABLE - Clean style */
     .rankings-container {
       background: white;
       border-radius: 20px;
@@ -286,6 +286,9 @@
       font-weight: 700;
       font-size: 0.9rem;
     }
+    .table-header span:first-child { text-align: left; }
+    .table-header span:last-child { text-align: right; }
+    
     .rank-row {
       display: grid;
       grid-template-columns: 70px 1fr 120px;
@@ -314,6 +317,7 @@
     .rank-pos {
       font-weight: 800;
       font-size: 1.2rem;
+      text-align: left;
     }
     .rank-pos.gold { color: var(--gold); }
     .rank-pos.silver { color: #94a3b8; }
@@ -321,6 +325,7 @@
     .corp-name {
       font-weight: 700;
       color: var(--navy);
+      text-align: left;
     }
     .target-stat {
       font-weight: 800;
@@ -507,29 +512,89 @@
   <!-- Self Denial Rankings -->
   <div id="selfdenial" class="rank-content active-rank">
     <div class="rankings-container">
-      <div class="table-header"><span>Rank</span><span>Corps</span><span>Achievement</span></div>
-      <div class="rank-row" data-corp="Makadara Citadel"><div class="rank-pos gold">#1</div><div class="corp-name">Makadara Citadel</div><div class="target-stat">250%</div></div>
-      <div class="rank-row" data-corp="Embakasi Corps"><div class="rank-pos silver">#2</div><div class="corp-name">Embakasi Corps</div><div class="target-stat">220%</div></div>
-      <div class="rank-row" data-corp="Dandora Phase 5"><div class="rank-pos bronze">#3</div><div class="corp-name">Dandora Phase 5</div><div class="target-stat">195%</div></div>
-      <div class="rank-row" data-corp="Kayole Corps"><div class="rank-pos">#4</div><div class="corp-name">Kayole Corps</div><div class="target-stat">178%</div></div>
-      <div class="rank-row" data-corp="Mwangaza Corps"><div class="rank-pos">#5</div><div class="corp-name">Mwangaza Corps</div><div class="target-stat">165%</div></div>
-      <div class="rank-row" data-corp="Pipeline Corps"><div class="rank-pos">#6</div><div class="corp-name">Pipeline Corps</div><div class="target-stat">152%</div></div>
+      <div class="table-header">
+        <span>Rank</span>
+        <span>Corps</span>
+        <span>Achievement</span>
+      </div>
+      <div class="rank-row" data-corp="Makadara Citadel">
+        <div class="rank-pos gold">#1</div>
+        <div class="corp-name">Makadara Citadel</div>
+        <div class="target-stat">250%</div>
+      </div>
+      <div class="rank-row" data-corp="Embakasi Corps">
+        <div class="rank-pos silver">#2</div>
+        <div class="corp-name">Embakasi Corps</div>
+        <div class="target-stat">220%</div>
+      </div>
+      <div class="rank-row" data-corp="Dandora Phase 5">
+        <div class="rank-pos bronze">#3</div>
+        <div class="corp-name">Dandora Phase 5</div>
+        <div class="target-stat">195%</div>
+      </div>
+      <div class="rank-row" data-corp="Kayole Corps">
+        <div class="rank-pos">#4</div>
+        <div class="corp-name">Kayole Corps</div>
+        <div class="target-stat">178%</div>
+      </div>
+      <div class="rank-row" data-corp="Mwangaza Corps">
+        <div class="rank-pos">#5</div>
+        <div class="corp-name">Mwangaza Corps</div>
+        <div class="target-stat">165%</div>
+      </div>
+      <div class="rank-row" data-corp="Pipeline Corps">
+        <div class="rank-pos">#6</div>
+        <div class="corp-name">Pipeline Corps</div>
+        <div class="target-stat">152%</div>
+      </div>
     </div>
-    <div class="rank-note"><i class="fas fa-qrcode"></i> Scan your corps certificate QR code — your corps will be highlighted in gold!</div>
+    <div class="rank-note">
+      <i class="fas fa-qrcode"></i> Scan your corps certificate QR code — your corps will be highlighted in gold!
+    </div>
   </div>
 
   <!-- Harvest Festival Rankings -->
   <div id="harvest" class="rank-content">
     <div class="rankings-container">
-      <div class="table-header"><span>Rank</span><span>Corps</span><span>Harvest (kg)</span></div>
-      <div class="rank-row" data-corp="Embakasi Corps"><div class="rank-pos gold">#1</div><div class="corp-name">Embakasi Corps</div><div class="target-stat">3,200 kg</div></div>
-      <div class="rank-row" data-corp="Makadara Citadel"><div class="rank-pos silver">#2</div><div class="corp-name">Makadara Citadel</div><div class="target-stat">2,850 kg</div></div>
-      <div class="rank-row" data-corp="Kayole Corps"><div class="rank-pos bronze">#3</div><div class="corp-name">Kayole Corps</div><div class="target-stat">2,600 kg</div></div>
-      <div class="rank-row" data-corp="Pipeline Corps"><div class="rank-pos">#4</div><div class="corp-name">Pipeline Corps</div><div class="target-stat">2,400 kg</div></div>
-      <div class="rank-row" data-corp="Dandora Phase 5"><div class="rank-pos">#5</div><div class="corp-name">Dandora Phase 5</div><div class="target-stat">2,100 kg</div></div>
-      <div class="rank-row" data-corp="Mwangaza Corps"><div class="rank-pos">#6</div><div class="corp-name">Mwangaza Corps</div><div class="target-stat">1,890 kg</div></div>
+      <div class="table-header">
+        <span>Rank</span>
+        <span>Corps</span>
+        <span>Harvest (kg)</span>
+      </div>
+      <div class="rank-row" data-corp="Embakasi Corps">
+        <div class="rank-pos gold">#1</div>
+        <div class="corp-name">Embakasi Corps</div>
+        <div class="target-stat">3,200 kg</div>
+      </div>
+      <div class="rank-row" data-corp="Makadara Citadel">
+        <div class="rank-pos silver">#2</div>
+        <div class="corp-name">Makadara Citadel</div>
+        <div class="target-stat">2,850 kg</div>
+      </div>
+      <div class="rank-row" data-corp="Kayole Corps">
+        <div class="rank-pos bronze">#3</div>
+        <div class="corp-name">Kayole Corps</div>
+        <div class="target-stat">2,600 kg</div>
+      </div>
+      <div class="rank-row" data-corp="Pipeline Corps">
+        <div class="rank-pos">#4</div>
+        <div class="corp-name">Pipeline Corps</div>
+        <div class="target-stat">2,400 kg</div>
+      </div>
+      <div class="rank-row" data-corp="Dandora Phase 5">
+        <div class="rank-pos">#5</div>
+        <div class="corp-name">Dandora Phase 5</div>
+        <div class="target-stat">2,100 kg</div>
+      </div>
+      <div class="rank-row" data-corp="Mwangaza Corps">
+        <div class="rank-pos">#6</div>
+        <div class="corp-name">Mwangaza Corps</div>
+        <div class="target-stat">1,890 kg</div>
+      </div>
     </div>
-    <div class="rank-note"><i class="fas fa-qrcode"></i> Scan your corps certificate QR code — your corps will be highlighted in gold!</div>
+    <div class="rank-note">
+      <i class="fas fa-qrcode"></i> Scan your corps certificate QR code — your corps will be highlighted in gold!
+    </div>
   </div>
 </div>
 
@@ -652,8 +717,6 @@
     highlightCorpFromURL();
   });
   window.addEventListener('hashchange', highlightCorpFromURL);
-  
-  // Also re-run when tabs are clicked (already handled above)
 </script>
 </body>
 </html>
