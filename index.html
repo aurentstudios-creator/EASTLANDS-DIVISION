@@ -23,7 +23,7 @@
       overflow-x: hidden;
     }
 
-    /* Animated background grain - makes site feel alive */
+    /* Animated background - alive feel */
     body::before {
       content: '';
       position: fixed;
@@ -55,8 +55,7 @@
       --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
       --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
       --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.08);
-      --glow-gold: 0 0 20px rgba(212, 175, 55, 0.6);
-      --glow-maroon: 0 0 15px rgba(139, 26, 43, 0.4);
+      --highlight-glow: 0 0 0 3px rgba(212,175,55,0.4), 0 0 20px rgba(212,175,55,0.3);
     }
 
     /* Navigation */
@@ -89,10 +88,6 @@
     }
     .logo-img:hover {
       transform: scale(1.02);
-    }
-    .logo-placeholder {
-      font-size: 0.8rem;
-      color: var(--navy);
     }
     .site-title h1 {
       font-size: 1rem;
@@ -224,7 +219,7 @@
       z-index: 1;
     }
 
-    /* GLOWING QR BADGE - BREATHING EFFECT */
+    /* GLOWING QR BADGE */
     .qr-badge {
       display: inline-block;
       background: rgba(212, 175, 55, 0.12);
@@ -239,28 +234,10 @@
       position: relative;
       z-index: 1;
       animation: breatheGlow 2s ease-in-out infinite;
-      transition: all 0.3s;
-    }
-    .qr-badge i {
-      margin-right: 0.5rem;
-      font-size: 0.85rem;
     }
     @keyframes breatheGlow {
-      0%, 100% {
-        box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
-        text-shadow: 0 0 2px rgba(212, 175, 55, 0.5);
-        border-color: var(--gold);
-      }
-      50% {
-        box-shadow: 0 0 25px rgba(212, 175, 55, 0.7), 0 0 8px rgba(212, 175, 55, 0.5);
-        text-shadow: 0 0 6px rgba(212, 175, 55, 0.8);
-        border-color: #f5e6a3;
-      }
-    }
-    .qr-badge:hover {
-      animation: none;
-      transform: scale(1.02);
-      background: rgba(212, 175, 55, 0.2);
+      0%, 100% { box-shadow: 0 0 5px rgba(212, 175, 55, 0.3); text-shadow: 0 0 2px rgba(212, 175, 55, 0.5); }
+      50% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.7); text-shadow: 0 0 6px rgba(212, 175, 55, 0.8); }
     }
 
     /* 3 Image Cards */
@@ -277,7 +254,6 @@
       text-align: center;
       box-shadow: var(--shadow-sm);
       transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      border: 1px solid rgba(0,0,0,0.03);
     }
     .info-card:hover {
       transform: translateY(-6px);
@@ -288,107 +264,70 @@
       max-height: 180px;
       object-fit: contain;
       margin-bottom: 1rem;
-      transition: transform 0.3s;
-    }
-    .info-card:hover .info-img {
-      transform: scale(1.02);
     }
     .info-card h3 {
       color: var(--maroon);
       margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
-    .info-card p {
-      color: var(--gray);
-      font-size: 0.9rem;
     }
 
-    /* EPL / CHAMPIONS LEAGUE STYLE RANKING TABLE */
+    /* RANKING TABLE - Clean style, no "league" or "points" */
     .rankings-container {
       background: white;
       border-radius: 20px;
       box-shadow: var(--shadow-md);
       overflow: hidden;
-      transition: all 0.3s;
     }
-    .league-header {
+    .table-header {
       display: grid;
-      grid-template-columns: 60px 1fr 100px 80px 60px;
+      grid-template-columns: 70px 1fr 120px;
       background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
       color: white;
-      padding: 1rem 1.2rem;
+      padding: 1rem 1.5rem;
       font-weight: 700;
-      font-size: 0.8rem;
-      letter-spacing: 0.5px;
+      font-size: 0.9rem;
     }
-    .league-header span:first-child { text-align: center; }
-    .league-header span:nth-child(2) { text-align: left; }
-    .league-header span:nth-child(3) { text-align: center; }
-    .league-header span:nth-child(4) { text-align: center; }
-    .league-header span:last-child { text-align: center; }
-
     .rank-row {
       display: grid;
-      grid-template-columns: 60px 1fr 100px 80px 60px;
-      padding: 0.9rem 1.2rem;
+      grid-template-columns: 70px 1fr 120px;
+      padding: 1rem 1.5rem;
       border-bottom: 1px solid var(--gray-light);
       align-items: center;
       transition: all 0.25s ease;
       cursor: pointer;
     }
     .rank-row:hover {
-      background: linear-gradient(90deg, var(--gray-light), transparent);
+      background: var(--gray-light);
       transform: translateX(4px);
+    }
+    /* Highlighted row when scanned from QR */
+    .rank-row.highlighted {
+      background: linear-gradient(90deg, rgba(212,175,55,0.15), transparent);
+      border-left: 4px solid var(--gold);
+      box-shadow: var(--highlight-glow);
+      animation: pulseHighlight 1.5s ease-in-out;
+    }
+    @keyframes pulseHighlight {
+      0% { background: rgba(212,175,55,0.05); }
+      50% { background: rgba(212,175,55,0.3); }
+      100% { background: linear-gradient(90deg, rgba(212,175,55,0.15), transparent); }
     }
     .rank-pos {
       font-weight: 800;
-      font-size: 1.1rem;
-      text-align: center;
+      font-size: 1.2rem;
     }
-    .rank-pos.gold { color: var(--gold); text-shadow: 0 0 2px rgba(212,175,55,0.3); }
+    .rank-pos.gold { color: var(--gold); }
     .rank-pos.silver { color: #94a3b8; }
     .rank-pos.bronze { color: #cd7f32; }
     .corp-name {
       font-weight: 700;
       color: var(--navy);
-      text-align: left;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .corp-name i {
-      color: var(--gold);
-      font-size: 0.9rem;
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-    .rank-row:hover .corp-name i {
-      opacity: 1;
     }
     .target-stat {
       font-weight: 800;
       color: var(--maroon);
-      text-align: center;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      text-align: right;
     }
-    .points {
-      font-weight: 700;
-      color: var(--navy);
-      text-align: center;
-      background: var(--gray-light);
-      padding: 0.2rem 0.5rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      display: inline-block;
-      margin: 0 auto;
-      width: fit-content;
-    }
-    .rank-badge-icon {
-      text-align: center;
-      font-size: 1.2rem;
-    }
-
-    /* Category Tabs - Sleek EPL Style */
     .category-tabs {
       display: flex;
       gap: 1rem;
@@ -406,14 +345,12 @@
       transition: all 0.3s;
       color: var(--navy);
       box-shadow: var(--shadow-sm);
-      font-size: 0.9rem;
       border: 1px solid transparent;
     }
     .category-btn.active {
       background: var(--navy);
       color: white;
       box-shadow: var(--shadow-md);
-      transform: scale(1.02);
     }
     .category-btn:hover:not(.active) {
       border-color: var(--gold);
@@ -439,6 +376,14 @@
       color: var(--gray);
       font-size: 0.85rem;
     }
+    .qr-instruction {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: rgba(212,175,55,0.1);
+      border-radius: 16px;
+      text-align: center;
+      border: 1px dashed var(--gold);
+    }
 
     /* Contact Section */
     .contact-grid {
@@ -451,16 +396,6 @@
       border-radius: 20px;
       padding: 1.5rem;
       box-shadow: var(--shadow-sm);
-      transition: all 0.3s;
-    }
-    .contact-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-    }
-    .contact-card h3 {
-      color: var(--maroon);
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
     }
     .contact-item {
       display: flex;
@@ -469,18 +404,10 @@
       margin-bottom: 0.8rem;
       padding: 0.5rem;
       border-radius: 12px;
-      transition: all 0.2s;
-    }
-    .contact-item:hover {
-      background: var(--gray-light);
     }
     .contact-item i {
       width: 28px;
       color: var(--gold);
-      font-size: 1.1rem;
-    }
-    .form-group {
-      margin-bottom: 1rem;
     }
     .form-group input, .form-group textarea {
       width: 100%;
@@ -488,12 +415,6 @@
       border: 1px solid #e2e8f0;
       border-radius: 12px;
       font-family: inherit;
-      transition: all 0.2s;
-    }
-    .form-group input:focus, .form-group textarea:focus {
-      outline: none;
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
     }
     .btn {
       background: var(--maroon);
@@ -503,15 +424,10 @@
       border-radius: 40px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s;
     }
     .btn:hover {
       background: var(--navy);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-sm);
     }
-
-    /* Footer */
     .footer {
       text-align: center;
       padding: 2rem;
@@ -522,47 +438,26 @@
     .footer a {
       color: var(--gold);
       text-decoration: none;
-      transition: all 0.2s;
-    }
-    .footer a:hover {
-      text-shadow: 0 0 5px var(--gold);
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
-      .mobile-menu {
-        display: block;
-      }
+      .mobile-menu { display: block; }
       .nav-links {
         display: none;
         width: 100%;
         flex-direction: column;
         align-items: center;
         padding: 1rem 0;
-        gap: 1rem;
       }
-      .nav-links.show {
-        display: flex;
-      }
-      .league-header, .rank-row {
-        grid-template-columns: 45px 1fr 70px 60px 40px;
-        font-size: 0.7rem;
-        gap: 0.2rem;
-        padding: 0.7rem 0.8rem;
-      }
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-      .page {
-        padding: 1rem;
-      }
-      .hero h1 {
-        font-size: 1.5rem;
-      }
-      .category-btn {
-        padding: 0.5rem 1.2rem;
+      .nav-links.show { display: flex; }
+      .table-header, .rank-row {
+        grid-template-columns: 50px 1fr 90px;
+        padding: 0.8rem 1rem;
         font-size: 0.8rem;
       }
+      .contact-grid { grid-template-columns: 1fr; }
+      .page { padding: 1rem; }
+      .hero h1 { font-size: 1.5rem; }
     }
   </style>
 </head>
@@ -571,8 +466,7 @@
 <nav class="navbar">
   <div class="nav-container">
     <div class="logo-area">
-      <img src="logo.png" alt="Salvation Army Logo" class="logo-img" id="mainLogo" onerror="this.style.display='none'; this.nextSibling.style.display='block'">
-      <div class="logo-placeholder" style="display: none;">SA</div>
+      <img src="logo.png" alt="Salvation Army Logo" class="logo-img" id="mainLogo" onerror="this.style.display='none'">
       <div class="site-title">
         <h1>Kenya East Territory</h1>
         <p>EASTLANDS DIVISION • QR PORTAL</p>
@@ -598,202 +492,82 @@
       <i class="fas fa-qrcode"></i> OFFICIAL QR PORTAL • SCAN TO VERIFY RANKINGS
     </div>
   </div>
-
   <div class="info-grid">
-    <div class="info-card">
-      <img src="info2.png" alt="Mission Info" class="info-img" onerror="this.src='https://placehold.co/300x200/f0f2f5/8b1a2b?text=Mission+%26+Vision'">
-      <h3>Our Mission & Vision</h3>
-      <p>Heart to God, Hand to Man — Transforming Eastlands through faith and service.</p>
-    </div>
-    <div class="info-card">
-      <img src="compass.png" alt="Direction Compass" class="info-img" onerror="this.src='https://placehold.co/300x200/f0f2f5/8b1a2b?text=Our+Direction'">
-      <h3>Our Direction</h3>
-      <p>Guided by faith, serving 15+ corps across Buruburu, Kayole, Umoja & beyond.</p>
-    </div>
-    <div class="info-card">
-      <img src="info.png" alt="Community Impact" class="info-img" onerror="this.src='https://placehold.co/300x200/f0f2f5/8b1a2b?text=Community+Impact'">
-      <h3>Our Impact</h3>
-      <p>Thousands of lives touched through food programs, education, and spiritual care.</p>
-    </div>
-  </div>
-
-  <div style="text-align: center; margin-top: 1rem;">
-    <p style="color: var(--gray); font-style: italic;">"Do all the good you can, by all the means you can" — William Booth</p>
+    <div class="info-card"><img src="info2.png" class="info-img" onerror="this.src='https://placehold.co/300x200/f0f2f5/8b1a2b?text=Mission'"><h3>Our Mission & Vision</h3><p>Heart to God, Hand to Man — Transforming Eastlands through faith and service.</p></div>
+    <div class="info-card"><img src="compass.png" class="info-img" onerror="this.src='https://placehold.co/300x200/f0f2f5/8b1a2b?text=Direction'"><h3>Our Direction</h3><p>Guided by faith, serving corps across Eastlands region.</p></div>
+    <div class="info-card"><img src="info.png" class="info-img" onerror="this.src='https://placehold.co/300x200/f0f2f5/8b1a2b?text=Impact'"><h3>Our Impact</h3><p>Thousands of lives touched through food programs, education, and spiritual care.</p></div>
   </div>
 </div>
 
-<!-- TARGET RANKINGS PAGE - EPL/CHAMPIONS LEAGUE STYLE -->
+<!-- TARGET RANKINGS PAGE with CORP HIGHLIGHTING -->
 <div id="rankings" class="page">
   <div class="section-header">
     <h2>🏆 Corps Target Rankings <span style="color: var(--gold);">2026</span></h2>
-    <p>Official Eastlands Division leaderboard • Scan QR on certificate to verify</p>
+    <p>Official Eastlands Division leaderboard — QR verified</p>
     <div class="accent-line"></div>
   </div>
 
   <div class="category-tabs">
-    <button class="category-btn active" data-category="selfdenial">💰 Self Denial League</button>
-    <button class="category-btn" data-category="harvest">🌾 Harvest Festival League</button>
+    <button class="category-btn active" data-category="selfdenial">💰 Self Denial</button>
+    <button class="category-btn" data-category="harvest">🌾 Harvest Festival</button>
   </div>
 
-  <!-- Self Denial Rankings - EPL Style -->
+  <!-- Self Denial Rankings -->
   <div id="selfdenial" class="rank-content active-rank">
     <div class="rankings-container">
-      <div class="league-header">
-        <span>POS</span>
-        <span>CORPS</span>
-        <span>ACHIEVEMENT</span>
-        <span>PTS</span>
-        <span>🏆</span>
-      </div>
-      <div class="rank-row">
-        <div class="rank-pos gold">1</div>
-        <div class="corp-name"><i class="fas fa-crown"></i> Buruburu Corps</div>
-        <div class="target-stat">250%</div>
-        <div><span class="points">50 pts</span></div>
-        <div class="rank-badge-icon">🏆</div>
-      </div>
-      <div class="rank-row">
-        <div class="rank-pos silver">2</div>
-        <div class="corp-name"><i class="fas fa-medal"></i> Kayole Corps</div>
-        <div class="target-stat">210%</div>
-        <div><span class="points">42 pts</span></div>
-        <div class="rank-badge-icon">🥈</div>
-      </div>
-      <div class="rank-row">
-        <div class="rank-pos bronze">3</div>
-        <div class="corp-name">Umoja Corps</div>
-        <div class="target-stat">185%</div>
-        <div><span class="points">37 pts</span></div>
-        <div class="rank-badge-icon">🥉</div>
-      </div>
-      <div class="rank-row">
-        <div class="rank-pos">4</div>
-        <div class="corp-name">Donholm Corps</div>
-        <div class="target-stat">170%</div>
-        <div><span class="points">34 pts</span></div>
-        <div class="rank-badge-icon">⭐</div>
-      </div>
-      <div class="rank-row">
-        <div class="rank-pos">5</div>
-        <div class="corp-name">Jericho Corps</div>
-        <div class="target-stat">168%</div>
-        <div><span class="points">33 pts</span></div>
-        <div class="rank-badge-icon"></div>
-      </div>
-      <div class="rank-row">
-        <div class="rank-pos">6</div>
-        <div class="corp-name">Embakasi Corps</div>
-        <div class="target-stat">155%</div>
-        <div><span class="points">31 pts</span></div>
-        <div class="rank-badge-icon"></div>
-      </div>
-      <div class="rank-row">
-        <div class="rank-pos">7</div>
-        <div class="corp-name">Mihang'o Corps</div>
-        <div class="target-stat">142%</div>
-        <div><span class="points">28 pts</span></div>
-        <div class="rank-badge-icon"></div>
-      </div>
-      <div class="rank-row">
-        <div class="rank-pos">8</div>
-        <div class="corp-name">Tena Corps</div>
-        <div class="target-stat">138%</div>
-        <div><span class="points">27 pts</span></div>
-        <div class="rank-badge-icon"></div>
-      </div>
+      <div class="table-header"><span>Rank</span><span>Corps</span><span>Achievement</span></div>
+      <div class="rank-row" data-corp="Makadara Citadel"><div class="rank-pos gold">#1</div><div class="corp-name">Makadara Citadel</div><div class="target-stat">250%</div></div>
+      <div class="rank-row" data-corp="Embakasi Corps"><div class="rank-pos silver">#2</div><div class="corp-name">Embakasi Corps</div><div class="target-stat">220%</div></div>
+      <div class="rank-row" data-corp="Dandora Phase 5"><div class="rank-pos bronze">#3</div><div class="corp-name">Dandora Phase 5</div><div class="target-stat">195%</div></div>
+      <div class="rank-row" data-corp="Kayole Corps"><div class="rank-pos">#4</div><div class="corp-name">Kayole Corps</div><div class="target-stat">178%</div></div>
+      <div class="rank-row" data-corp="Mwangaza Corps"><div class="rank-pos">#5</div><div class="corp-name">Mwangaza Corps</div><div class="target-stat">165%</div></div>
+      <div class="rank-row" data-corp="Pipeline Corps"><div class="rank-pos">#6</div><div class="corp-name">Pipeline Corps</div><div class="target-stat">152%</div></div>
     </div>
-    <div class="rank-note">
-      <i class="fas fa-qrcode" style="animation: breatheGlow 2s ease-in-out infinite; display: inline-block; margin-right: 0.5rem;"></i> 
-      Scan your corps certificate QR code to verify official rankings. Updated quarterly.
-    </div>
+    <div class="rank-note"><i class="fas fa-qrcode"></i> Scan your corps certificate QR code — your corps will be highlighted in gold!</div>
   </div>
 
-  <!-- Harvest Festival Rankings - EPL Style -->
+  <!-- Harvest Festival Rankings -->
   <div id="harvest" class="rank-content">
     <div class="rankings-container">
-      <div class="league-header">
-        <span>POS</span>
-        <span>CORPS</span>
-        <span>HARVEST (kg)</span>
-        <span>PTS</span>
-        <span>🏆</span>
-      </div>
-      <div class="rank-row">
-        <div class="rank-pos gold">1</div>
-        <div class="corp-name"><i class="fas fa-crown"></i> Embakasi Corps</div>
-        <div class="target-stat">3,200 kg</div>
-        <div><span class="points">50 pts</span></div>
-        <div class="rank-badge-icon">🏆</div>
-      </div>
-      <div class="rank-row">
-        <div class="rank-pos silver">2</div>
-        <div class="corp-name"><i class="fas fa-medal"></i> Buruburu Corps</div>
-        <div class="target-stat">2,800 kg</div>
-        <div><span class="points">44 pts</span></div>
-        <div class="rank-badge-icon">🥈</div>
-      </div>
-      <div class="rank-row">
-        <div class="rank-pos bronze">3</div>
-        <div class="corp-name">Mihang'o Corps</div>
-        <div class="target-stat">2,500 kg</div>
-        <div><span class="points">39 pts</span></div>
-        <div class="rank-badge-icon">🥉</div>
-      </div>
-      <div class="rank-row">
-        <div class="rank-pos">4</div>
-        <div class="corp-name">Tena Corps</div>
-        <div class="target-stat">2,100 kg</div>
-        <div><span class="points">33 pts</span></div>
-        <div class="rank-badge-icon">⭐</div>
-      </div>
-      <div class="rank-row">
-        <div class="rank-pos">5</div>
-        <div class="corp-name">Kayole Corps</div>
-        <div class="target-stat">1,950 kg</div>
-        <div><span class="points">30 pts</span></div>
-        <div class="rank-badge-icon"></div>
-      </div>
-      <div class="rank-row">
-        <div class="rank-pos">6</div>
-        <div class="corp-name">Umoja Corps</div>
-        <div class="target-stat">1,820 kg</div>
-        <div><span class="points">28 pts</span></div>
-        <div class="rank-badge-icon"></div>
-      </div>
+      <div class="table-header"><span>Rank</span><span>Corps</span><span>Harvest (kg)</span></div>
+      <div class="rank-row" data-corp="Embakasi Corps"><div class="rank-pos gold">#1</div><div class="corp-name">Embakasi Corps</div><div class="target-stat">3,200 kg</div></div>
+      <div class="rank-row" data-corp="Makadara Citadel"><div class="rank-pos silver">#2</div><div class="corp-name">Makadara Citadel</div><div class="target-stat">2,850 kg</div></div>
+      <div class="rank-row" data-corp="Kayole Corps"><div class="rank-pos bronze">#3</div><div class="corp-name">Kayole Corps</div><div class="target-stat">2,600 kg</div></div>
+      <div class="rank-row" data-corp="Pipeline Corps"><div class="rank-pos">#4</div><div class="corp-name">Pipeline Corps</div><div class="target-stat">2,400 kg</div></div>
+      <div class="rank-row" data-corp="Dandora Phase 5"><div class="rank-pos">#5</div><div class="corp-name">Dandora Phase 5</div><div class="target-stat">2,100 kg</div></div>
+      <div class="rank-row" data-corp="Mwangaza Corps"><div class="rank-pos">#6</div><div class="corp-name">Mwangaza Corps</div><div class="target-stat">1,890 kg</div></div>
     </div>
-    <div class="rank-note">
-      <i class="fas fa-qrcode" style="animation: breatheGlow 2s ease-in-out infinite; display: inline-block; margin-right: 0.5rem;"></i> 
-      Official Harvest Festival rankings. QR verified • Eastlands Division 2026
-    </div>
+    <div class="rank-note"><i class="fas fa-qrcode"></i> Scan your corps certificate QR code — your corps will be highlighted in gold!</div>
+  </div>
+
+  <!-- QR Instruction Box -->
+  <div class="qr-instruction">
+    <i class="fas fa-qrcode" style="font-size: 1.5rem; color: var(--gold); margin-bottom: 0.5rem; display: block;"></i>
+    <strong>📱 How to create your corps QR code:</strong><br>
+    Use this URL pattern: <code style="background: #eee; padding: 0.2rem 0.5rem; border-radius: 8px;">https://YOUR-SITE.com/#rankings?corp=CorpsName</code><br>
+    Replace <strong>CorpsName</strong> with: Makadara Citadel, Embakasi Corps, Dandora Phase 5, Kayole Corps, Mwangaza Corps, or Pipeline Corps<br>
+    <span style="font-size: 0.8rem; display: block; margin-top: 0.5rem;">✅ When scanned, their specific corps row will GLOW and be highlighted!</span>
   </div>
 </div>
 
 <!-- CONTACT PAGE -->
 <div id="contact" class="page">
-  <div class="section-header">
-    <h2>📞 Contact Us</h2>
-    <p>Eastlands Divisional Headquarters</p>
-    <div class="accent-line"></div>
-  </div>
-
+  <div class="section-header"><h2>📞 Contact Us</h2><div class="accent-line"></div></div>
   <div class="contact-grid">
     <div class="contact-card">
-      <h3><i class="fas fa-map-pin"></i> Divisional Office</h3>
+      <h3>📌 Divisional Office</h3>
       <div class="contact-item"><i class="fas fa-building"></i> P.O. Box 12345-00100, Nairobi</div>
       <div class="contact-item"><i class="fas fa-phone"></i> +254 700 123 456</div>
       <div class="contact-item"><i class="fas fa-envelope"></i> eastlands@salvationarmy.or.ke</div>
-      <div class="contact-item"><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</div>
-      <h3 style="margin-top: 1.2rem;"><i class="fas fa-user-tie"></i> Divisional Leaders</h3>
-      <div class="contact-item"><i class="fas fa-user"></i> Major Pius Musimba - Divisional Commander</div>
+      <h3 style="margin-top: 1rem;">👨‍💼 Divisional Leaders</h3>
+      <div class="contact-item"><i class="fas fa-user"></i> Major Pius Musimba - Commander</div>
       <div class="contact-item"><i class="fas fa-user"></i> Major Alice Musimba - DDWM</div>
     </div>
-
     <div class="contact-card">
-      <h3><i class="fas fa-paper-plane"></i> Send a Message</h3>
-      <form onsubmit="event.preventDefault(); alert('✓ Message received! We will respond within 2-3 days. God bless you!'); this.reset();">
+      <h3>✉️ Send a Message</h3>
+      <form onsubmit="event.preventDefault(); alert('✓ Message received! God bless you!'); this.reset();">
         <div class="form-group"><input type="text" placeholder="Your Name" required></div>
         <div class="form-group"><input type="email" placeholder="Your Email" required></div>
-        <div class="form-group"><input type="text" placeholder="Corps (optional)"></div>
         <div class="form-group"><textarea rows="3" placeholder="Your Message" required></textarea></div>
         <button type="submit" class="btn">Send Message</button>
       </form>
@@ -803,7 +577,6 @@
 
 <footer class="footer">
   <p>© 2026 The Salvation Army - Kenya East Territory | Eastlands Division QR Portal</p>
-  <p style="margin-top: 0.5rem; font-size: 0.8rem;">"Heart to God, Hand to Man"</p>
   <p style="margin-top: 0.5rem; font-size: 0.75rem;">Designed by <a href="mailto:aurentstudios@gmail.com">Aurent Studios</a></p>
 </footer>
 
@@ -812,28 +585,19 @@
     document.getElementById('navLinks').classList.toggle('show');
   }
 
+  // Page navigation
   const pages = ['home', 'rankings', 'contact'];
   const navLinks = document.querySelectorAll('.nav-links a');
-
   function showPage(pageId) {
-    pages.forEach(page => {
-      document.getElementById(page).classList.remove('active-page');
-    });
+    pages.forEach(p => document.getElementById(p).classList.remove('active-page'));
     document.getElementById(pageId).classList.add('active-page');
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('data-page') === pageId) {
-        link.classList.add('active');
-      }
+    navLinks.forEach(l => {
+      l.classList.remove('active');
+      if (l.getAttribute('data-page') === pageId) l.classList.add('active');
     });
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (window.innerWidth <= 768) {
-      document.getElementById('navLinks').classList.remove('show');
-    }
+    if (window.innerWidth <= 768) document.getElementById('navLinks').classList.remove('show');
   }
-
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
@@ -841,33 +605,72 @@
     });
   });
 
+  // Category tabs
   const categoryBtns = document.querySelectorAll('.category-btn');
   const rankContents = document.querySelectorAll('.rank-content');
-
   categoryBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       categoryBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const category = btn.getAttribute('data-category');
-      rankContents.forEach(content => {
-        content.classList.remove('active-rank');
-        if (content.id === category) {
-          content.classList.add('active-rank');
-        }
+      rankContents.forEach(c => {
+        c.classList.remove('active-rank');
+        if (c.id === btn.getAttribute('data-category')) c.classList.add('active-rank');
       });
+      // Re-run highlighting after tab switch
+      highlightCorpFromURL();
     });
   });
 
-  showPage('home');
-
-  const logoImg = document.getElementById('mainLogo');
-  if (logoImg) {
-    logoImg.onerror = function() {
-      this.style.display = 'none';
-      const placeholder = this.nextElementSibling;
-      if (placeholder) placeholder.style.display = 'block';
-    };
+  // HIGHLIGHT CORPS FROM QR CODE URL PARAMETER
+  function highlightCorpFromURL() {
+    // Remove any existing highlights
+    document.querySelectorAll('.rank-row').forEach(row => row.classList.remove('highlighted'));
+    
+    // Get corp parameter from URL
+    const urlParams = new URLSearchParams(window.location.hash.split('?')[1] || '');
+    let corpName = urlParams.get('corp');
+    
+    if (corpName) {
+      corpName = decodeURIComponent(corpName).trim();
+      // Try to find matching row in currently visible rank content
+      const activeContent = document.querySelector('.rank-content.active-rank');
+      if (activeContent) {
+        const rows = activeContent.querySelectorAll('.rank-row');
+        let found = false;
+        rows.forEach(row => {
+          const corpCell = row.querySelector('.corp-name');
+          if (corpCell && corpCell.innerText.trim().toLowerCase() === corpName.toLowerCase()) {
+            row.classList.add('highlighted');
+            found = true;
+            // Smooth scroll to highlighted row
+            setTimeout(() => row.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+          }
+        });
+        if (found) {
+          // Show a subtle toast/notification
+          const note = document.querySelector('.rank-note');
+          if (note) {
+            const originalText = note.innerHTML;
+            note.innerHTML = '<i class="fas fa-check-circle"></i> ✨ ' + corpName + ' highlighted! This is your corps rank. ✨';
+            note.style.background = 'rgba(212,175,55,0.2)';
+            setTimeout(() => {
+              note.innerHTML = originalText;
+              note.style.background = '';
+            }, 4000);
+          }
+        }
+      }
+    }
   }
+
+  // Run highlighting on page load and when hash changes
+  window.addEventListener('load', () => {
+    showPage('rankings');
+    highlightCorpFromURL();
+  });
+  window.addEventListener('hashchange', highlightCorpFromURL);
+  
+  // Also re-run when tabs are clicked (already handled above)
 </script>
 </body>
 </html>
