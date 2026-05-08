@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Salvation Army Eastlands | Corps Target Rankings</title>
+  <title>Kenya East Territory | Eastlands Division QR Portal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -70,14 +70,15 @@
       color: var(--navy);
     }
     .site-title h1 {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--navy);
+      line-height: 1.3;
     }
     .site-title p {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: var(--maroon);
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
     .nav-links {
       display: flex;
@@ -177,7 +178,7 @@
       margin: 0 auto;
     }
 
-    /* 3 Image Cards for Home Page */
+    /* 3 Image Cards for Home Page - SWAPPED info.png and info2.png positions */
     .info-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -366,6 +367,19 @@
       text-decoration: none;
     }
 
+    /* QR Portal Badge */
+    .qr-badge {
+      display: inline-block;
+      background: rgba(212,175,55,0.15);
+      border: 1px solid var(--gold);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--maroon);
+      margin-top: 0.5rem;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .mobile-menu {
@@ -407,8 +421,8 @@
       <img src="logo.png" alt="Salvation Army Logo" class="logo-img" id="mainLogo" onerror="this.style.display='none'; this.nextSibling.style.display='block'">
       <div class="logo-placeholder" style="display: none;">SA</div>
       <div class="site-title">
-        <h1>Salvation Army</h1>
-        <p>EASTLANDS DIVISION</p>
+        <h1>Kenya East Territory</h1>
+        <p>EASTLANDS DIVISION • QR PORTAL</p>
       </div>
     </div>
     <div class="mobile-menu" onclick="toggleMenu()">
@@ -425,24 +439,28 @@
 <!-- HOME PAGE -->
 <div id="home" class="page active-page">
   <div class="hero">
-    <h1>Eastlands Division <span>2025</span></h1>
+    <h1>Eastlands Division <span>2026</span></h1>
     <p>Celebrating excellence, dedication, and faithful service across all corps</p>
+    <div class="qr-badge"><i class="fas fa-qrcode"></i> Official QR Portal • Scan to Verify Rankings</div>
   </div>
 
-  <!-- Three supporting images as requested -->
+  <!-- Three supporting images - info.png and info2.png SWAPPED positions -->
   <div class="info-grid">
+    <!-- First card now shows info2.png (was info.png before) -->
     <div class="info-card">
-      <img src="info.png" alt="Mission Info" class="info-img" onerror="this.src='https://placehold.co/300x200/f0f2f5/8b1a2b?text=Mission+%26+Vision'">
+      <img src="info2.png" alt="Mission Info" class="info-img" onerror="this.src='https://placehold.co/300x200/f0f2f5/8b1a2b?text=Mission+%26+Vision'">
       <h3>Our Mission & Vision</h3>
       <p>Heart to God, Hand to Man — Transforming Eastlands through faith and service.</p>
     </div>
+    <!-- Second card stays compass.png -->
     <div class="info-card">
       <img src="compass.png" alt="Direction Compass" class="info-img" onerror="this.src='https://placehold.co/300x200/f0f2f5/8b1a2b?text=Our+Direction'">
       <h3>Our Direction</h3>
       <p>Guided by faith, serving 15+ corps across Buruburu, Kayole, Umoja & beyond.</p>
     </div>
+    <!-- Third card now shows info.png (was info2.png before) -->
     <div class="info-card">
-      <img src="info2.png" alt="Community Impact" class="info-img" onerror="this.src='https://placehold.co/300x200/f0f2f5/8b1a2b?text=Community+Impact'">
+      <img src="info.png" alt="Community Impact" class="info-img" onerror="this.src='https://placehold.co/300x200/f0f2f5/8b1a2b?text=Community+Impact'">
       <h3>Our Impact</h3>
       <p>Thousands of lives touched through food programs, education, and spiritual care.</p>
     </div>
@@ -456,7 +474,7 @@
 <!-- TARGET RANKINGS PAGE (QR CODE DESTINATION) -->
 <div id="rankings" class="page">
   <div class="section-header">
-    <h2>🏆 Corps Target Rankings 2025</h2>
+    <h2>🏆 Corps Target Rankings 2026</h2>
     <p>Scan the QR code on your certificate to see your corps' rank</p>
     <div class="accent-line"></div>
   </div>
@@ -548,8 +566,8 @@
       <div class="contact-item"><i class="fas fa-envelope"></i> eastlands@salvationarmy.or.ke</div>
       <div class="contact-item"><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</div>
       <h3 style="margin-top: 1.2rem;"><i class="fas fa-user-tie"></i> Divisional Leaders</h3>
-      <div class="contact-item"><i class="fas fa-user"></i> Major John Mwangi - Commander</div>
-      <div class="contact-item"><i class="fas fa-user"></i> Major Mary Mwangi - Associate</div>
+      <div class="contact-item"><i class="fas fa-user"></i> Major Pius Musimba - Divisional Commander</div>
+      <div class="contact-item"><i class="fas fa-user"></i> Major Alice Musimba - DDWM (Director of Women's Ministries)</div>
     </div>
 
     <div class="contact-card">
@@ -566,8 +584,9 @@
 </div>
 
 <footer class="footer">
-  <p>© 2025 The Salvation Army - Eastlands Division | "Heart to God, Hand to Man"</p>
-  <p style="margin-top: 0.5rem; font-size: 0.8rem;">Designed by <a href="mailto:aurentstudios@gmail.com">Aurent Studios</a></p>
+  <p>© 2026 The Salvation Army - Kenya East Territory | Eastlands Division QR Portal</p>
+  <p style="margin-top: 0.5rem; font-size: 0.8rem;">"Heart to God, Hand to Man"</p>
+  <p style="margin-top: 0.5rem; font-size: 0.75rem;">Designed by <a href="mailto:aurentstudios@gmail.com">Aurent Studios</a></p>
 </footer>
 
 <script>
